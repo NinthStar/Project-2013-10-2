@@ -1,0 +1,24 @@
+body
+{
+	background-color : #000000;
+}
+.system
+{
+	color            : #00FF33;
+	font             : 16px Helvetica, Arial;
+	font-size        : 1.2em;
+	font-weight      : 700;
+	display          : inline;
+	margin           : 1px;
+}
+.input
+{
+	background-color : #000000;
+	color            : #FFFFFF;
+	font             : 16px Helvetica, Arial;
+	font-size        : 1.2em;
+	font-weight      : 700;
+	border           : 0px solid #000000;
+	display          : inline;
+	margin           : 1px;
+}
