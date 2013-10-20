@@ -1,6 +1,6 @@
 body
 {
-	background-color : #000000;
+	background-color : #000;
 }
 .system
 {
@@ -13,12 +13,12 @@ body
 }
 .input
 {
-	background-color : #000000;
-	color            : #FFFFFF;
+	background-color : #000;
+	color            : #FFF;
 	font             : 16px Helvetica, Arial;
 	font-size        : 1.2em;
 	font-weight      : 700;
-	border           : 0px solid #000000;
+	border           : 0px solid #000;
 	display          : inline;
 	margin           : 1px;
 }

@@ -3,7 +3,8 @@
 	<head>
 		<script src  = "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 		<script type = "text/javascript" src = "Terminal.js"></script>
-		<link   rel  = stylesheet href = "Terminal.css"></style>
+		<!-- Do not work in IE10/!-->
+		<link   rel  = stylesheet href = "Terminal.css"/>
 		<title>
 			NinthStar's Terminalhelp
 		</title>
@@ -20,58 +21,58 @@
 			{
 				o = $.extend(
 				{
-					maxWidth    : 1000,
-					minWidth    : 0,
+					maxWidth	: 1000,
+					minWidth	: 0,
 					comfortZone : 70
 				}, o);
 				
 				this.filter("input:text").each(function()
 				{
 					var minWidth = o.minWidth || $(this).width(),
-					    val = '',
-					    input = $(this),
-					    testSubject = $("<tester/>").css(
-					    {
-					        position      : "absolute",
-					        top           : -9999,
-					        left          : -9999,
-					        width         : "auto",
-					        fontSize      : input.css("fontSize"),
-					        fontFamily    : input.css("fontFamily"),
-					        fontWeight    : input.css("fontWeight"),
-					        letterSpacing : input.css("letterSpacing"),
-					        whiteSpace    : "nowrap"
-					    }),
-					    check = function()
-					    {
-					        if (val === (val = input.val()))
-					        {
-					            return;
-					        }
+						val = '',
+						input = $(this),
+						testSubject = $("<tester/>").css(
+						{
+							position		: "absolute",
+							top				: -9999,
+							left			: -9999,
+							width			: "auto",
+							fontSize		: input.css("fontSize"),
+							fontFamily		: input.css("fontFamily"),
+							fontWeight		: input.css("fontWeight"),
+							letterSpacing	: input.css("letterSpacing"),
+							whiteSpace		: "nowrap"
+						}),
+						check = function()
+						{
+							if (val === (val = input.val()))
+							{
+								return;
+							}
 							
-					        // Enter new content into testSubject
-					        var escaped = val.replace(/&/g, "&amp;").replace(/\s/g,"&nbsp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-					        testSubject.html(escaped);
+							// Enter new content into testSubject
+							var escaped = val.replace(/&/g, "&amp;").replace(/\s/g,"&nbsp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+							testSubject.html(escaped);
 						
-					        // Calculate new width + whether to change
-					        var testerWidth = testSubject.width(),
-					            newWidth = (testerWidth + o.comfortZone) >= minWidth ? testerWidth + o.comfortZone : minWidth,
-					            currentWidth = input.width(),
-					            isValidWidthChange = (newWidth < currentWidth && newWidth >= minWidth)
-					                              || (newWidth > minWidth && newWidth < o.maxWidth);
+							// Calculate new width + whether to change
+							var testerWidth = testSubject.width(),
+								newWidth = (testerWidth + o.comfortZone) >= minWidth ? testerWidth + o.comfortZone : minWidth,
+								currentWidth = input.width(),
+								isValidWidthChange = (newWidth < currentWidth && newWidth >= minWidth)
+												  || (newWidth > minWidth && newWidth < o.maxWidth);
 						
-					        // Animate width
-					        if (isValidWidthChange)
-					        {
+							// Animate width
+							if (isValidWidthChange)
+							{
 								input.width(newWidth);
-					        }
+							}
 							else if (newWidth >= o.maxWidth)
 							{
 								alert("Please do NOT type too many words!\n"
-								    + "This terminal can only show 80 letters per line at most.");
+									+ "This terminal can only show 80 letters per line at most.");
 							}
 						
-					    };
+						};
 						
 						testSubject.insertAfter(input);
 						$(this).bind("keyup keydown blur update", check);
